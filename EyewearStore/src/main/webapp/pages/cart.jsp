@@ -3,12 +3,23 @@
 <%@page import="dao.*"%>
 <%@page import="model.User"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%User user = (User) request.getSession().getAttribute("auth");
     if(user != null){
     	request.setAttribute("auth", user);
-    }%>
+    }
+    
+    ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+    List<Cart> cartProduct = null;
+    if(cart_list != null){
+    	ProductDao pDao = new ProductDao(DBConnection.getConnection());
+    	cartProduct = pDao.getCartProducts(cart_list);
+    	request.setAttribute("cart_list", cart_list);
+    	
+    }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +39,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Prodotto 1</td>
-                <td>Categoria 1</td>
-                <td>10.00 €</td>
+        <% 
+        if(cart_list != null){
+           for (Cart c: cartProduct){%>
+        		<tr>
+                <td><%= c.getNome() %></td>
+                <td><%= c.getMarca() %></td>
+                <td><%= c.getPrezzo() %></td>
                 <td>
                     <form>
                         <button type="button">-</button>
@@ -44,23 +58,10 @@
                     <button type="submit">Rimuovi</button>
                 </td>
             </tr>
-            <tr>
-                <td>Prodotto 2</td>
-                <td>Categoria 2</td>
-                <td>15.00 €</td>
-                <td>
-                    <form>
-                        <button type="button">-</button>
-                        <input type="number" min="0" value="1">
-                        <button type="button">+</button>
-                    </form>
-                </td>
-                <td>
-                    <button type="submit">Buy Now</button>
-                    <button type="submit">Rimuovi</button>
-                </td>
-            </tr>
-            <!-- Aggiungere altre righe per i prodotti nel carrello -->
+        	<% }
+        }
+        %>
+            
         </tbody>
     </table>
 
