@@ -19,7 +19,7 @@
             </form>
         </div>
         <div class="links">
-            <a href="#">Home</a>
+            <a href="../pages/index.jsp">Home</a>
             <% 
             if (user != null) { %>
             	<a href="${pageContext.request.contextPath}/log-out">Logout</a>
@@ -27,7 +27,7 @@
             	<a href="../pages/signupLogin.jsp">Login/Signup</a>
             <%} 
             %>
-            <a href="../pages/cart.jsp">Carrello</a>
+            <a href="../pages/cart.jsp">Carrello<span>${ cart_list.size() }</span></a>
         </div>
     </div>
 </body>

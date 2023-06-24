@@ -16,6 +16,16 @@
     </servlet-mapping>
     
     <servlet>
+    	<servlet-name>RegistrationServlet</servlet-name>
+    	<servlet-class>servlet.RegistrationServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>RegistrsationServlet</servlet-name>
+    	<url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>servlet.LogoutServlet</servlet-class>
     </servlet>
@@ -34,5 +44,34 @@
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/add-cart</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>QuantityModifierServlet</servlet-name>
+        <servlet-class>servlet.QuantityModifierServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>QuantityModifierServlet</servlet-name>
+        <url-pattern>/inc-dec</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RemoveFromCartServlet</servlet-name>
+        <servlet-class>servlet.RemoveFromCartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RemoveFromCartServlet</servlet-name>
+        <url-pattern>/remove-cart</url-pattern>
+    </servlet-mapping>
 	
+	<servlet>
+        <servlet-name>BuyNowServlet</servlet-name>
+        <servlet-class>servlet.BuyNowServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BuyNowServlet</servlet-name>
+        <url-pattern>/buy-now</url-pattern>
+    </servlet-mapping>
 </web-app>

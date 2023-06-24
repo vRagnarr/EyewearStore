@@ -6,20 +6,18 @@ public class Product {
 	private String marca;
 	private String prezzo;
 	private String sesso;
-	private int quantità;
 	private String image;
 	
 	public Product() {
 		
 	}
 	
-	public Product(int id, String nome, String marca, String prezzo, String sesso, int quantità) {
+	public Product(int id, String nome, String marca, String prezzo, String sesso) {
 		this.id = id;
 		this.nome = nome;
 		this.marca = marca;
 		this.prezzo = prezzo;
 		this.sesso = sesso;
-		this.quantità = quantità;
 	}
 
 	public String getPrezzo() {
@@ -28,14 +26,6 @@ public class Product {
 
 	public void setPrezzo(String prezzo) {
 		this.prezzo = prezzo;
-	}
-
-	public int getQuantità() {
-		return quantità;
-	}
-
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
 	}
 
 	public String getImage() {
@@ -82,7 +72,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", nome=" + nome + ", marca=" + marca + ", prezzo=" + prezzo + ", sesso=" + sesso
-				+ ", quantità=" + quantità + "]";
+				 + "]";
 	}
 	
 	

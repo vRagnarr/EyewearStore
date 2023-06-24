@@ -3,6 +3,7 @@
 <%@page import="dao.*"%>
 <%@page import="model.User"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<% User user = (User) request.getSession().getAttribute("auth"); 
@@ -12,6 +13,13 @@
 	
 	ProductDao pd = new ProductDao(DBConnection.getConnection());
 	List<Product> products = pd.getProducts();
+	
+    ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+    if(cart_list != null){
+    	request.setAttribute("cart_list", cart_list);
+    }
+    
+    
 	%>
 <!DOCTYPE html>
 <html>
@@ -35,7 +43,7 @@
       					<p class="product-price">Prezzo: <%= p.getPrezzo() %> EUR</p>
       					<div class="product-buttons">
         					<a href="${pageContext.request.contextPath}/add-cart?id=<%= p.getId() %>" class="add-to-cart">Aggiungi al carrello</a>
-        					<button class="buy-now">Compra ora</button>
+        					<a href="../buy-now" class="buy-now">Compra ora</a>
       					</div>
     				</div>
     		<%

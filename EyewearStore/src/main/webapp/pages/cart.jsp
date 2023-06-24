@@ -4,30 +4,33 @@
 <%@page import="model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%User user = (User) request.getSession().getAttribute("auth");
-    if(user != null){
-    	request.setAttribute("auth", user);
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    User user = (User) request.getSession().getAttribute("auth");
+    if (user != null) {
+        request.setAttribute("auth", user);
     }
     
     ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
     List<Cart> cartProduct = null;
-    if(cart_list != null){
-    	ProductDao pDao = new ProductDao(DBConnection.getConnection());
-    	cartProduct = pDao.getCartProducts(cart_list);
-    	request.setAttribute("cart_list", cart_list);
-    	
+    String total = "0"; // Imposta il valore predefinito a 0
+    if (cart_list != null) {
+        ProductDao pDao = new ProductDao(DBConnection.getConnection());
+        cartProduct = pDao.getCartProducts(cart_list);
+        total = pDao.getTotalCartPrice(cart_list);
+        request.setAttribute("cart_list", cart_list);
+        request.setAttribute("total", total);
     }
-    %>
+%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Carrello</title>
     <link rel="stylesheet" type="text/css" href="../styles/cartStyle.css">
+    <script src="../scripts/cartScript.js"></script>
 </head>
 <body>
-	<%@include file="../fragments/navbar.jsp" %>	
+    <%@include file="../fragments/navbar.jsp" %>    
     <table class="carrello-table">
         <thead>
             <tr>
@@ -39,33 +42,43 @@
             </tr>
         </thead>
         <tbody>
-        <% 
-        if(cart_list != null){
-           for (Cart c: cartProduct){%>
-        		<tr>
+        <%
+        if (cart_list != null) {
+            for (Cart c: cartProduct) {
+            	System.out.println(c.getQuantity());
+        %>
+            <tr>
                 <td><%= c.getNome() %></td>
                 <td><%= c.getMarca() %></td>
                 <td><%= c.getPrezzo() %></td>
                 <td>
                     <form>
-                        <button type="button">-</button>
-                        <input type="number" min="0" value="1">
-                        <button type="button">+</button>
-                    </form>
+  						<a href="../inc-dec?action=dec&id=<%= c.getId() %>">-</a>
+  						<input type="text" name="quantity" value="<%= c.getQuantity() %>" readonly>
+  						<a href="../inc-dec?action=inc&id=<%= c.getId() %>">+</a>
+					</form>
                 </td>
                 <td>
-                    <button type="submit">Buy Now</button>
-                    <button type="submit">Rimuovi</button>
+                    <a href="../buy-now?id=<%= c.getId() %>&quantity=<%= c.getQuantity() %>" type="submit">Buy Now</a>
+                    <a href="../remove-cart?id=<%= c.getId() %>" type="submit">Rimuovi</a>
                 </td>
             </tr>
-        	<% }
+        <% 
+            }
         }
         %>
-            
         </tbody>
     </table>
 
-    <p id="totalPrice">Totale carrello: <span>0.00 €</span></p>
+    <p id="totalPrice">
+    Totale carrello:
+    <% if (Float.parseFloat(total) > 0) { %>
+        <span><%= total %></span>
+    <% } else { %>
+        <span>0</span>
+    <% } %>
+    euro
+</p>
+
 </body>
 </html>
-
