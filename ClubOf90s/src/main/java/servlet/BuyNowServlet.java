@@ -31,10 +31,8 @@ public class BuyNowServlet extends HttpServlet {
 				Order order = new Order();
 				order.setId(id);
 				order.setQuantity(quantity);
-				order.setUserId(auth.getId());
-				order.setDate(Date.valueOf(LocalDate.now())+"");
-				order.setStato("Ordinato");
-				order.setValore(quantity*(Double.parseDouble(request.getParameter("prezzo"))));
+				order.setUserId(auth.getEmail());
+				order.setDate(Date.valueOf(LocalDate.now()));
 				
 				OrderDao orderDao = new OrderDao(DBConnection.getConnection());
 				boolean res = orderDao.insertOrder(order);

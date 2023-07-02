@@ -2,7 +2,6 @@ package model;
 
 public class User {
 	
-	private int id;
 	private String nome;
 	private String cognome;
 	private String email;
@@ -13,18 +12,6 @@ public class User {
 	
 	public User() {
 		
-	}
-	
-	public User(int id, String nome, String cognome, String email, String password, String indirizzo, String data_nascita,
-			String sesso) {
-		this.id = id;
-		this.nome = nome;
-		this.cognome = cognome;
-		this.email = email;
-		this.password = password;
-		this.indirizzo = indirizzo;
-		this.data_nascita = data_nascita;
-		this.sesso = sesso;
 	}
 	
 	public User(String nome, String cognome, String email, String password, String indirizzo, String data_nascita,
@@ -38,14 +25,6 @@ public class User {
 		this.sesso = sesso;
 	}
 
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getNome() {
 		return nome;
 	}

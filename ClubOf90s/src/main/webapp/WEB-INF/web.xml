@@ -6,16 +6,6 @@
 
     
     <servlet>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>servlet.AdminServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
-        <url-pattern>/admin</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlet.LoginServlet</servlet-class>
     </servlet>
@@ -31,7 +21,7 @@
     </servlet>
     
     <servlet-mapping>
-    	<servlet-name>RegistrationServlet</servlet-name>
+    	<servlet-name>RegistrsationServlet</servlet-name>
     	<url-pattern>/signup</url-pattern>
     </servlet-mapping>
     
@@ -83,15 +73,5 @@
     <servlet-mapping>
         <servlet-name>BuyNowServlet</servlet-name>
         <url-pattern>/buy-now</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>CheckOutServlet</servlet-name>
-        <servlet-class>servlet.CheckOutServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>CheckOutServlet</servlet-name>
-        <url-pattern>/check-out</url-pattern>
     </servlet-mapping>
 </web-app>

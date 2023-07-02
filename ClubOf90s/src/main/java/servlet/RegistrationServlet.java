@@ -29,8 +29,8 @@ public class RegistrationServlet extends HttpServlet {
             // Inserimento dei dati nel database
 
             UserDao userDao = new UserDao(DBConnection.getConnection());
-            User newUser = new User(nome, cognome, email, PasswordHasher.hashPassword(password),
-                    indirizzo, dataNascita, sesso);
+            User newUser = new User(nome, cognome, email, indirizzo, PasswordHasher.hashPassword(password),
+                    dataNascita, sesso);
 
             if (userDao.registerUser(newUser)) {
                 String contextPath = request.getContextPath();

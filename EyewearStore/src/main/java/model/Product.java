@@ -1,30 +1,52 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Product {
 	private int id;
 	private String nome;
-	private String marca;
-	private String prezzo;
+	private String brand;
+	private double prezzo;
 	private String sesso;
 	private String image;
+	private String modello;
+	private String data_inserimento;
 	
 	public Product() {
 		
 	}
 	
-	public Product(int id, String nome, String marca, String prezzo, String sesso) {
+	public Product(int id, String nome, String brand, double prezzo, String date, String sesso, String modello) {
 		this.id = id;
 		this.nome = nome;
-		this.marca = marca;
+		this.brand = brand;
 		this.prezzo = prezzo;
 		this.sesso = sesso;
+		this.modello = modello;
+		this.data_inserimento = date;
+	}
+	
+	public String getModello() {
+		return modello;
 	}
 
-	public String getPrezzo() {
+	public void setModello(String modello) {
+		this.modello = modello;
+	}
+	
+	public String getData_Inserimento() {
+		return data_inserimento;
+	}
+	
+	public void setData_Inserimento(String date) {
+		this.data_inserimento = date;
+	}
+	
+	public double getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(String prezzo) {
+	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 
@@ -44,8 +66,8 @@ public class Product {
 		return nome;
 	}
 
-	public String getMarca() {
-		return marca;
+	public String getBrand() {
+		return brand;
 	}
 
 	public String getSesso() {
@@ -61,8 +83,8 @@ public class Product {
 		this.nome = nome;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 	public void setSesso(String sesso) {
@@ -71,7 +93,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", nome=" + nome + ", marca=" + marca + ", prezzo=" + prezzo + ", sesso=" + sesso
+		return "Product [id=" + id + ", nome=" + nome + ", marca=" + brand + ", prezzo=" + prezzo + ", sesso=" + sesso
 				 + "]";
 	}
 	

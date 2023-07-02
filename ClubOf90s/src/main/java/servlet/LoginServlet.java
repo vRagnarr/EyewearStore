@@ -23,20 +23,14 @@ public class LoginServlet extends HttpServlet {
     	try(PrintWriter out = response.getWriter()){
     		String email = request.getParameter("email");
             String password = PasswordHasher.hashPassword(request.getParameter("password"));
-            System.out.println(password);
+            
             UserDao userDao = new UserDao(DBConnection.getConnection());
-            User user;
-            if(!email.equals("admin@admin.com")) {
-            	user = userDao.userLogin(email, password);
-            }else
-            	user = userDao.userLogin(email, request.getParameter("password"));
+            User user = userDao.userLogin(email, password);
+            
             if(user != null) {
             	request.getSession().setAttribute("auth", user);
             	String contextPath = request.getContextPath();
-            	if(email.equals("admin@admin.com"))
-            		response.sendRedirect(contextPath+"/pages/admin/amministrazione.jsp");
-            	else
-            		response.sendRedirect(contextPath + "/pages/index.jsp");
+            	response.sendRedirect(contextPath + "/pages/index.jsp");
 
             }else {
             	out.print("user login failed");

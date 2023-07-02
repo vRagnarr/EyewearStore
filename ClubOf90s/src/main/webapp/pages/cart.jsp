@@ -35,7 +35,7 @@
         <thead>
             <tr>
                 <th class="col-prodotto">Prodotto</th>
-                <th class="col-categoria">Brand</th>
+                <th class="col-categoria">Categoria</th>
                 <th class="col-prezzo">Prezzo</th>
                 <th class="col-quantita">Quantità</th>
                 <th class="col-azioni">Azioni</th>
@@ -49,7 +49,7 @@
         %>
             <tr>
                 <td><%= c.getNome() %></td>
-                <td><%= c.getBrand() %></td>
+                <td><%= c.getMarca() %></td>
                 <td><%= c.getPrezzo() %></td>
                 <td>
                     <form>
@@ -59,7 +59,7 @@
 					</form>
                 </td>
                 <td>
-                    <a href="../buy-now?id=<%= c.getId() %>&quantity=<%= c.getQuantity() %>&prezzo=<%= c.getPrezzo() %>" type="submit">Buy Now</a>
+                    <a href="../buy-now?id=<%= c.getId() %>&quantity=<%= c.getQuantity() %>" type="submit">Buy Now</a>
                     <a href="../remove-cart?id=<%= c.getId() %>" type="submit">Rimuovi</a>
                 </td>
             </tr>
@@ -79,6 +79,6 @@
     <% } %>
     euro
 </p>
-<a href="../check-out" class="checkout-button">Check-out</a>
+
 </body>
 </html>

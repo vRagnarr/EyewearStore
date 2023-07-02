@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import extra.PasswordHasher;
+import java.util.List;
+import java.util.ArrayList;
+
 import model.User;
 
 public class UserDao {
@@ -28,7 +30,10 @@ public class UserDao {
 			
 			if(rs.next()) {
 				user = new User();
-				user.setNome(rs.getString("nome"));
+				user.setId(rs.getInt("id"));
+				user.setNome(rs.getString("name"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
 				user.setCognome(rs.getString("cognome"));
 				user.setIndirizzo(rs.getString("indirizzo"));
 				user.setSesso(rs.getString("sesso"));
@@ -43,7 +48,7 @@ public class UserDao {
 	
 	public boolean registerUser(User user) {
         try {
-            query = "INSERT INTO Utente (nome, email, password, indirizzo, data_nascita, sesso, cognome) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO Utente (name, email, password, indirizzo, data_nascita, sesso, cognome) VALUES (?, ?, ?, ?, ?, ?, ?)";
             pst = this.con.prepareStatement(query);
             pst.setString(1, user.getNome());
             pst.setString(2, user.getEmail());
@@ -61,4 +66,49 @@ public class UserDao {
             return false;
         }
     }
+	
+	public List<User> getAllUsersExceptAdmin() {
+	    List<User> userList = new ArrayList<>();
+	    try {
+	        query = "SELECT * FROM Utente WHERE email <> 'admin@admin.com'";
+	        pst = this.con.prepareStatement(query);
+	        rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            User user = new User();
+	            user.setId(rs.getInt("id"));
+	            user.setNome(rs.getString("name"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPassword(rs.getString("password"));
+	            user.setCognome(rs.getString("cognome"));
+	            user.setIndirizzo(rs.getString("indirizzo"));
+	            user.setSesso(rs.getString("sesso"));
+	            user.setData_nascita(rs.getString("data_nascita"));
+	            userList.add(user);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.print(e.getMessage());
+	    }
+	    return userList;
+	}
+
+
+    public void deleteUser(int userId) {
+        String sql = "DELETE FROM Utente WHERE id = ?";
+
+        try (PreparedStatement statement = con.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected == 0) {
+                System.out.println("Non è stato possibile eliminare l'utente con ID: " + userId);
+            } else {
+                System.out.println("Utente eliminato con successo!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+	
 }

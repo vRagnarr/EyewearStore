@@ -4,41 +4,22 @@ import java.sql.Date;
 
 public class Order extends Product{
 	private int orderId;
-	private int userId;
+	private String userId;
 	private int quantity;
-	private String date;
-	private String stato;
-	private double valore;
+	private Date date;
 	
 	public Order() {
 		
 	}
 
-	public Order(int orderId, int userId, int quantity, String date, String stato, double valore) {
+	public Order(int orderId, String userId, int quantity, Date date) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
 		this.quantity = quantity;
 		this.date = date;
-		this.stato = stato;
-		this.valore = valore;
 	}
-	
-	public String getStato() {
-		return stato;
-	}
-	
-	public void setStato(String stato) {
-		this.stato = stato;
-	}
-	
-	public double getValore() {
-		return valore;
-	}
-	
-	public void setValore(double valore) {
-		this.valore = valore;
-	}
+
 	public int getOrderId() {
 		return orderId;
 	}
@@ -47,11 +28,11 @@ public class Order extends Product{
 		this.orderId = orderId;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -63,11 +44,11 @@ public class Order extends Product{
 		this.quantity = quantity;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	
