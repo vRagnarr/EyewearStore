@@ -30,7 +30,8 @@
     <script src="../scripts/cartScript.js"></script>
 </head>
 <body>
-    <%@include file="../fragments/navbar.jsp" %>    
+    <%@include file="../fragments/navbar.jsp" %>
+    <div class="carrello-table-container">
     <table class="carrello-table">
         <thead>
             <tr>
@@ -69,7 +70,7 @@
         %>
         </tbody>
     </table>
-
+	</div>
     <p id="totalPrice">
     Totale carrello:
     <% if (Float.parseFloat(total) > 0) { %>
@@ -80,5 +81,6 @@
     euro
 </p>
 <a href="../check-out" class="checkout-button">Check-out</a>
+<%@include file="../fragments/footer.jsp" %>
 </body>
 </html>

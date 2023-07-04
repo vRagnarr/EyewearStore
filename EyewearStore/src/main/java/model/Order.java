@@ -71,5 +71,4 @@ public class Order extends Product{
 		this.date = date;
 	}
 	
-	
 }

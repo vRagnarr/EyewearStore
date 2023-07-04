@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -9,32 +11,6 @@
 .logo img {
     height: 60px;
     width: auto;
-}
-
-.search {
-    flex-grow: 1;
-    margin: 0 10px;
-}
-
-.search form {
-    display: flex;
-    align-items: center;
-}
-
-.search input {
-    flex-grow: 1;
-    padding: 5px;
-    font-size: 14px;
-    max-width: 200px;
-}
-
-.search button {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
 }
 
 .links a {
@@ -52,6 +28,11 @@
     .navbar {
         flex-direction: column;
         align-items: flex-start;
+        padding: 10px 20px; /* Aggiunta la modifica per aumentare il padding sui lati */
+    }
+
+    .logo img {
+        height: 40px; /* Ridimensionamento dell'altezza del logo per adattarsi a schermi più piccoli */
     }
 
     .search {
@@ -71,5 +52,6 @@
     .links a {
         display: block;
         margin-top: 5px;
+        margin-left: 0; /* Rimozione del margine a sinistra per adattarsi al layout della colonna */
     }
 }

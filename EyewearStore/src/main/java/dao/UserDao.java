@@ -48,15 +48,15 @@ public class UserDao {
 	
 	public boolean registerUser(User user) {
         try {
-            query = "INSERT INTO Utente (name, email, password, indirizzo, data_nascita, sesso, cognome) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO Utente (name, cognome, indirizzo, data_nascita, sesso, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
             pst = this.con.prepareStatement(query);
             pst.setString(1, user.getNome());
-            pst.setString(2, user.getEmail());
-            pst.setString(3, user.getPassword());
-            pst.setString(4, user.getIndirizzo());
-            pst.setString(5, user.getData_nascita());
-            pst.setString(6, user.getSesso());
-            pst.setString(7, user.getCognome());
+            pst.setString(2, user.getCognome());
+            pst.setString(3, user.getIndirizzo());
+            pst.setString(4, user.getData_nascita());
+            pst.setString(5, user.getSesso());
+            pst.setString(6, user.getEmail());
+            pst.setString(7, user.getPassword());
 
             int rowsAffected = pst.executeUpdate();
             return rowsAffected > 0;

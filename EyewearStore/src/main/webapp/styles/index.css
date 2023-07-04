@@ -1,0 +1,150 @@
+/* Stile del contenitore principale */
+.container {
+  width: 100%;
+  max-width: 100%; /* Modificata la larghezza massima al 100% */
+  margin: 0 auto;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+/* Stile del titolo */
+.title {
+  text-align: center;
+  color: #41521F;
+}
+
+/* Stile del contenitore dei prodotti */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2%;
+  margin-top: 2%;
+}
+
+/* Stile della scheda del prodotto */
+.product-card {
+  background-color: #F5FDC6;
+  padding: 2%;
+  text-align: center;
+  border: 2px solid #D0B17A;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Stile dell'immagine del prodotto */
+.product-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Stile dei pulsanti del prodotto */
+.product-buttons {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Stile del link "Aggiungi al carrello" */
+.add-to-cart {
+  display: inline-block;
+  flex: 1;
+  background-color: #A89F68;
+  color: #fff;
+  padding: 2%;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 2%;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart span {
+  position: relative;
+  z-index: 2;
+}
+
+.add-to-cart::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.add-to-cart:hover {
+  background-color: #41521F;
+}
+
+.add-to-cart:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+
+/* Stile del link "Compra ora" */
+.buy-now {
+  display: inline-block;
+  flex: 1;
+  background-color: #A89F68;
+  color: #fff;
+  padding: 2%;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 2%;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now span {
+  position: relative;
+  z-index: 2;
+}
+
+.buy-now::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.buy-now:hover {
+  background-color: #41521F;
+}
+
+.buy-now:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+
+/* Stile dello sfondo della pagina */
+body {
+  background-color: #FFFDC6;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-card {
+    margin-bottom: 4%;
+  }
+  
+  .product-image {
+    max-width: 100%;
+  }
+}

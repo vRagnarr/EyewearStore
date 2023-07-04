@@ -39,7 +39,7 @@ public class BuyNowServlet extends HttpServlet {
 				OrderDao orderDao = new OrderDao(DBConnection.getConnection());
 				boolean res = orderDao.insertOrder(order);
 				if(res) {
-					response.sendRedirect(contextPath+"/pages/orders.jsp");
+					response.sendRedirect(contextPath+"/pages/userpage.jsp");
 				}
 				
 			}else {

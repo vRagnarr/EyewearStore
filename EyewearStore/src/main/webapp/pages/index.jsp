@@ -26,12 +26,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="../styles/product-card.css">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
 </head>
 <body>
    	<%@ include file="../fragments/navbar.jsp" %>
 	<div class="container">
-  		<h1 class="title">New Arrivals</h1>
+  		<h1 class="title">CATALOGO</h1>
   		<div class="product-container">
     		<%
     		if(!products.isEmpty()) {
@@ -52,6 +52,8 @@
     		%>
   		</div>
 	</div>
+
+	<%@include file="../fragments/footer.jsp" %>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ public class CheckOutServlet extends HttpServlet {
 					if(!res) break;
 				}
 				cart_list.clear();
-				response.sendRedirect(contextPath+"/pages/orders.jsp");
+				response.sendRedirect(contextPath+"/pages/userpage.jsp");
 				
 			}else if(user == null) {
 				response.sendRedirect(contextPath+"/pages/signupLogin.jsp");

@@ -1,36 +1,94 @@
+/* Carrello */
+.carrello-table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .carrello-table {
-    border: 2px solid blue;
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th {
-    background-color: #f2f2f2;
-    font-weight: bold; 
-    padding: 10px;
+.carrello-table th,
+.carrello-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #D0B17A;
 }
 
-td {
-    padding: 10px;
+.carrello-table th {
+  background-color: #F5C396;
+  color: #41521F; /* Colore più scuro per i titoli delle colonne */
 }
 
-.col-quantita form {
-    display: flex;
-    align-items: center;
+.carrello-table td {
+  background-color: #A89F68;
+  color: #FFFFFF; /* Testo bianco all'interno delle celle */
 }
 
-.col-quantita form button {
-    font-size: 14px;
-    padding: 5px 10px;
-    margin: 0 5px;
+.carrello-table a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 5px 8px;
+  border: 1px solid #D0B17A;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.carrello-table a:last-child {
+  margin-right: 0;
+}
+
+.carrello-table a:hover {
+  background-color: #D0B17A;
+}
+
+.checkout-button {
+  display: block;
+  background-color: #A89F68;
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.checkout-button:hover {
+  background-color: #D0B17A;
 }
 
 #totalPrice {
-    font-weight: bold;
-    margin-left: 20px;
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #41521F;
+}
+
+#totalPrice span {
+  color: #A89F68;
+}
+
+/* Stile per dispositivi con larghezza inferiore a 803px */
+@media only screen and (max-width: 803px) {
+  .carrello-table th,
+  .carrello-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .carrello-table a {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  .checkout-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Aggiungi qui le regole CSS specifiche per la colonna su schermi più piccoli */
 }
