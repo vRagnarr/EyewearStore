@@ -1,150 +1,113 @@
-/* Stile del contenitore principale */
+/* Stili per il layout generale */
 .container {
-  width: 100%;
-  max-width: 100%; /* Modificata la larghezza massima al 100% */
-  margin: 0 auto;
-  padding: 2%;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Stile del titolo */
+/* Stili per il titolo */
 .title {
-  text-align: center;
-  color: #41521F;
+    text-align: center;
 }
 
-/* Stile del contenitore dei prodotti */
+/* Stili per i filtri */
+.filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters label {
+    margin-right: 10px;
+}
+
+/* Stili per il filtro di sesso */
+#sex-filter {
+    padding: 5px;
+}
+
+/* Stili per il contenitore dei prodotti */
 .product-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2%;
-  margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    overflow-y: auto; /* Aggiungi la proprietà overflow-y con il valore auto */
+    max-height: calc(100vh - 200px); /* Imposta l'altezza massima del container in base all'altezza della viewport */
 }
 
-/* Stile della scheda del prodotto */
+/* Stili per la barra verticale */
+.product-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.product-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.product-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.product-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
 .product-card {
-  background-color: #F5FDC6;
-  padding: 2%;
-  text-align: center;
-  border: 2px solid #D0B17A;
-  border-radius: 8px;
-  position: relative;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-/* Stile dell'immagine del prodotto */
+.product-brand {
+    font-weight: bold;
+}
+
 .product-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
 }
 
-/* Stile dei pulsanti del prodotto */
+.product-price {
+    margin-top: 10px;
+}
+
 .product-buttons {
-  margin-top: 2%;
-  display: flex;
-  justify-content: space-between;
+    margin-top: 20px;
 }
 
-/* Stile del link "Aggiungi al carrello" */
-.add-to-cart {
-  display: inline-block;
-  flex: 1;
-  background-color: #A89F68;
-  color: #fff;
-  padding: 2%;
-  text-decoration: none;
-  text-align: center;
-  margin-right: 2%;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
+/* Stili per il link "Aggiungi al carrello" */
+.product-buttons .add-to-cart {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-.add-to-cart span {
-  position: relative;
-  z-index: 2;
+.product-buttons .add-to-cart:hover {
+    background-color: #45a049;
 }
 
-.add-to-cart::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  transition: width 0.3s ease;
-  z-index: 1;
+/* Stili per il link "Compra ora" */
+.product-buttons .buy-now {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #2196f3;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-.add-to-cart:hover {
-  background-color: #41521F;
+.product-buttons .buy-now:hover {
+    background-color: #1e87db;
 }
 
-.add-to-cart:hover::after {
-  width: 100%;
-  left: 0;
-}
-
-
-/* Stile del link "Compra ora" */
-.buy-now {
-  display: inline-block;
-  flex: 1;
-  background-color: #A89F68;
-  color: #fff;
-  padding: 2%;
-  text-decoration: none;
-  text-align: center;
-  margin-left: 2%;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-}
-
-.buy-now span {
-  position: relative;
-  z-index: 2;
-}
-
-.buy-now::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  transition: width 0.3s ease;
-  z-index: 1;
-}
-
-.buy-now:hover {
-  background-color: #41521F;
-}
-
-.buy-now:hover::after {
-  width: 100%;
-  left: 0;
-}
-
-
-/* Stile dello sfondo della pagina */
-body {
-  background-color: #FFFDC6;
-}
-
-@media only screen and (max-width: 600px) {
-  .product-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .product-card {
-    margin-bottom: 4%;
-  }
-  
-  .product-image {
-    max-width: 100%;
-  }
+/* Stili per il footer */
+footer {
+    text-align: center;
+    padding: 20px;
 }

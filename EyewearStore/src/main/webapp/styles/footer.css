@@ -1,41 +1,42 @@
 @charset "UTF-8";
 
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 2%;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 2%;
+  text-align: center;
 }
 
 .footer-content {
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 .social-media a {
-    display: inline-block;
-    margin-right: 2%;
+  display: inline-block;
+  margin-right: 2%;
 }
 
 .social-media img {
-    width: 3%;
-    height: auto;
+  width: 3%;
+  height: auto;
 }
 
 /* Media query per schermi di larghezza massima 768px */
 @media (max-width: 768px) {
-    footer {
-        padding: 5%;
-    }
+  footer {
+    padding: 5%;
+    position: relative; /* Aggiunta la posizione relativa per evitare sovrapposizioni */
+  }
 
-    .footer-content {
-        margin-bottom: 5%;
-    }
+  .footer-content {
+    margin-bottom: 5%;
+  }
 
-    .social-media a {
-        margin-right: 3%;
-    }
+  .social-media a {
+    margin-right: 3%;
+  }
 
-    .social-media img {
-        width: 5%;
-    }
+  .social-media img {
+    width: 5%;
+  }
 }
