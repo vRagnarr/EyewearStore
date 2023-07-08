@@ -13,7 +13,7 @@
     
     ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
     List<Cart> cartProduct = null;
-    String total = "0"; // Imposta il valore predefinito a 0
+    String total = "0";
     if (cart_list != null) {
         ProductDao pDao = new ProductDao(DBConnection.getConnection());
         cartProduct = pDao.getCartProducts(cart_list);
