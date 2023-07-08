@@ -127,7 +127,7 @@ public class ProductDao {
 	}
 	
 	public void addProduct(Product product) {
-	    String sql = "INSERT INTO Prodotto (nome, brand, modello, prezzo, data_inserimento, sesso) VALUES (?, ?, ?, ?, ?, ?)";
+	    String sql = "INSERT INTO Prodotto (nome, brand, modello, prezzo, data_inserimento, immagine, sesso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 	    try (PreparedStatement statement = con.prepareStatement(sql)) {
 	        statement.setString(1, product.getNome());
@@ -135,7 +135,8 @@ public class ProductDao {
 	        statement.setString(3, product.getModello());
 	        statement.setDouble(4, product.getPrezzo());
 	        statement.setString(5, product.getData_Inserimento());
-	        statement.setString(6, product.getSesso());
+	        statement.setString(6, product.getImage());
+	        statement.setString(7, product.getSesso());
 
 	        int rowsAffected = statement.executeUpdate();
 	        if (rowsAffected == 0) {

@@ -50,7 +50,7 @@ if(cart_list != null){
                 for (Product p : products) { %>
                     <div class="product-card">
                         <p class="product-brand"><%= p.getBrand() %></p>
-                        <img src="../media/<%= p.getImage() %>" alt="Immagine del prodotto" class="product-image">
+                        <img src="tmp/media/<%= p.getImage() %>" alt="Immagine del prodotto" class="product-image">
                         <p class="product-price">Prezzo: <%= p.getPrezzo() %> EUR</p>
                         <div class="product-buttons">
                             <a href="${pageContext.request.contextPath}/add-cart?id=<%= p.getId() %>&prezzo=<%= p.getPrezzo() %>" class="add-to-cart">Aggiungi al carrello</a>

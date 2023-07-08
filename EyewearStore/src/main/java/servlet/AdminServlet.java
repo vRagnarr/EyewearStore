@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.OrderDao;
 import dao.ProductDao;
@@ -61,6 +63,13 @@ public class AdminServlet extends HttpServlet {
         String modello = request.getParameter("modello");
         double prezzo = Double.parseDouble(request.getParameter("prezzo"));
         String sesso = request.getParameter("sesso");
+        Part filePart = request.getPart("immagine");
+        String fileName = filePart.getSubmittedFileName();
+
+
+        // Salva il file nella cartella del progetto
+        String filePath = "../media/" + File.separator + fileName;
+        filePart.write(filePath);
 
         // Creazione di un nuovo oggetto Product con i valori ricevuti dalla form
         Product product = new Product();
@@ -70,12 +79,25 @@ public class AdminServlet extends HttpServlet {
         product.setPrezzo(prezzo);
         product.setSesso(sesso);
         product.setData_Inserimento(LocalDate.now()+"");
+        product.setImage(fileName); // Salva il nome del file nel database
 
         // Logica per aggiungere il nuovo prodotto al database
         ProductDao productDao = new ProductDao(DBConnection.getConnection());
         productDao.addProduct(product);
 
         response.sendRedirect(request.getContextPath() + "/pages/admin/amministrazione.jsp");
+    }
+
+    // Metodo ausiliario per estrarre il nome del file da un Part
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] tokens = contentDisp.split(";");
+        for (String token : tokens) {
+            if (token.trim().startsWith("filename")) {
+                return token.substring(token.indexOf("=") + 2, token.length() - 1);
+            }
+        }
+        return "";
     }
 
     private void updateProductPrice(HttpServletRequest request, HttpServletResponse response)
@@ -155,6 +177,5 @@ public class AdminServlet extends HttpServlet {
         // Logica per eliminare l'utente con l'ID specificato dal database
         UserDao userDao = new UserDao(DBConnection.getConnection());
         userDao.deleteUser(userId);
-
     }
 }

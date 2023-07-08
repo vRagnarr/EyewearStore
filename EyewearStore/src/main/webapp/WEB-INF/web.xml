@@ -6,9 +6,16 @@
 
     
     <servlet>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>servlet.AdminServlet</servlet-class>
-    </servlet>
+    	<servlet-name>AdminServlet</servlet-name>
+    	<servlet-class>servlet.AdminServlet</servlet-class>
+    		<multipart-config>
+        		<location>/tmp</location> <!-- Specifica una directory temporanea per la memorizzazione dei file -->
+        		<max-file-size>1048576</max-file-size> <!-- Specifica la dimensione massima del file in byte -->
+        		<max-request-size>2097152</max-request-size> <!-- Specifica la dimensione massima totale della richiesta in byte -->
+        		<file-size-threshold>0</file-size-threshold>
+    		</multipart-config>
+	</servlet>
+    
 
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>

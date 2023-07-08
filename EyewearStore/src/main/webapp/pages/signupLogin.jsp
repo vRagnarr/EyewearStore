@@ -15,7 +15,7 @@
   <title>Registrazione</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="login.css">
-  <script src="Validation.js"></script>
+  <script src="../scripts/validation.js"></script>
 </head>
 <body>
   <div class="container">
@@ -59,9 +59,11 @@
               </div>
               <div class="d-flex flex-row align-items-center justify-content-between">
                 <a href="../pages/login.jsp">Accedi</a>
-                <button class="btn btn-primary" id="submit-btn" disabled>Crea Account</button>
+                <button class="btn btn-primary" id="submit-btn">Crea Account</button>
               </div>
             </form>
+            <p id="password-message" class="error-message"></p>
+            
           </div>
         </div>
       </div>

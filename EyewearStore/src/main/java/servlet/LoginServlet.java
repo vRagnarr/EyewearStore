@@ -28,12 +28,17 @@ public class LoginServlet extends HttpServlet {
             User user;
             if(!email.equals("admin@admin.com")) {
             	user = userDao.userLogin(email, password);
-            }else
-            	user = userDao.userLogin(email, request.getParameter("password"));
+            }else {
+            	if(request.getParameter("password").equals("EyewearAdmin")) {
+            		user = new User();
+            		user.setNome("admin");
+            	}else
+            		user = null;
+            }
             if(user != null) {
             	request.getSession().setAttribute("auth", user);
             	String contextPath = request.getContextPath();
-            	if(email.equals("admin@admin.com"))
+            	if(user.getNome().equals("admin"))
             		response.sendRedirect(contextPath+"/pages/admin/amministrazione.jsp");
             	else
             		response.sendRedirect(contextPath + "/pages/index.jsp");
